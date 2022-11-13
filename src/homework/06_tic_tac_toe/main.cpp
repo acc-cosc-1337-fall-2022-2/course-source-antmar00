@@ -1,4 +1,5 @@
 #include "tic_tac_toe.h"
+#include "tic_tac_toe_manager.h"
 
 int main()
 {
@@ -8,7 +9,7 @@ int main()
 	int gameloop = 0;
 	int reply = {0};
 	
-	cout << "Tic Tac Toe\n\n";
+	cout << "Tic Tac Toe\n";
 	cout << "First player choose X or O\n";
 	cin >> first_player;
 	game.start_game(first_player);

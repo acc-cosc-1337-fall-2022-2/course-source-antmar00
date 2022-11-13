@@ -8,6 +8,10 @@ using std::string;
 using std::vector;
 using std::cin;
 using std::cout;
+using std::ostream;
+using std::istream;
+#ifndef TicTacToe_H
+#define TicTacToe_H
 
 class TicTacToe
 {
@@ -18,6 +22,8 @@ class TicTacToe
         string get_player() const;
         void display_board() const;
         string get_winner();
+        friend ostream& operator<<(ostream& out, const TicTacToe& game);
+        friend istream& operator>>(istream& in, TicTacToe& game);
 
     private:
         void set_next_player();
@@ -31,3 +37,4 @@ class TicTacToe
         string winner;
         vector<string> pegs{" "," "," "," "," "," "," "," "," "};
 };
+#endif
