@@ -169,14 +169,19 @@ void TicTacToe::clear_board()
 
 ostream& operator<<(ostream& out, const TicTacToe& game)
 {
-    for(int i = 0; i < game.pegs.size(); i++)
+    string output = "";
+
+    if (game.pegs.size() == 9)
     {
-        out << game.pegs[i];
-        if (i == 2 || i == 5 || i == 8)
-        {
-            out << '\n';
-        }
-        else{out << '|';}
+        output =("\033[4m" + game.pegs.at(0) + "|" + game.pegs.at(1) + "|" + game.pegs.at(2) + "\n" +
+                             game.pegs.at(3) + "|" + game.pegs.at(4) + "|" + game.pegs.at(5) + "\033[0m" + "\n" + 
+                             game.pegs.at(6) + "|" + game.pegs.at(7) + "|" + game.pegs.at(8) + "\n");
+    } 
+    else if (game.pegs.size() == 16) {
+        output =("\033[4m" + game.pegs.at(0) + "|" + game.pegs.at(1) + "|" + game.pegs.at(2) + "|"  + game.pegs.at(3) + "\n" +
+                             game.pegs.at(4) + "|" + game.pegs.at(5) + "|" + game.pegs.at(6) + "|"  + game.pegs.at(7) + "\n" +
+                             game.pegs.at(8) + "|" + game.pegs.at(9) + "|" + game.pegs.at(10) + "|"  + game.pegs.at(11) + "\033[0m" + "\n" + 
+                             game.pegs.at(12) + "|" + game.pegs.at(13) + "|" + game.pegs.at(14) + "|"  + game.pegs.at(15) + "\n");
     }
 
     return out;

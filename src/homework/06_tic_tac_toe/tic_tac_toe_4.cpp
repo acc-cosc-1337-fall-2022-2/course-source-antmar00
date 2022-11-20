@@ -12,7 +12,9 @@ false
 */
 
 
-
+    for (int coulmn = 0; coulmn < 4 && win == 0; coulmn++) {
+        win = 1;
+        for (int row = 0; row < 4; row++) {
 
 /*
 class function check_row_win
