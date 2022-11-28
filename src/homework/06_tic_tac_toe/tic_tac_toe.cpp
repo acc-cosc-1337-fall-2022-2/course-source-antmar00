@@ -87,12 +87,12 @@ bool TicTacToe::check_diagonal_win()
 
 void TicTacToe::set_winner()
 {
-    if (player=="X")
-        winner="O";
-    else 
+  if (player=="X")
+    winner="O";
+  else 
         winner ="X";
 }
-std::ostream& operator<<(std::ostream& out, const TicTacToe& game)
+std::ostream& operator<<(std::ostream& out, const TicTacToe &game)
 {
   if (game.pegs.size()==9)
   {

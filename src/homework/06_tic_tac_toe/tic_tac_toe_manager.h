@@ -6,7 +6,6 @@
 
 class TicTacToeManager
 {
-
 public:
     friend std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager);
     void save_game(std::unique_ptr<TicTacToe> &b);
