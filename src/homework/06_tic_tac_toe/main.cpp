@@ -9,12 +9,14 @@ using std::make_unique;
 using std::cin;
 int main() 
 {
-	TicTacToeManager manager;
+	TicTacToeData data;
+	TicTacToeManager manager(data);
 	LOOP: string player_choice;
-	std::cout<<"Tic Tac Toe. Press 3 for 3X3 board or press 4 for 4X4 board: ";
+	std::cout<<"Press 3 for tictactoe 3 and 4 for tictactoe 4: ";
 	int player_choice0;
 	cin>>player_choice0;
 	unique_ptr<TicTacToe> game;
+	//unique_ptr<TicTacToe> game=make_unique<TicTacToe3>();
 	
 	if(player_choice0==3)
 		game=make_unique<TicTacToe3>();
@@ -25,21 +27,22 @@ int main()
 		goto LOOP;
 	}
 	
-	std::cout<<"\n First Player! Please Enter X or O(Only Capital Letter): ";
+	std::cout<<"\nFirst Player! Please Enter X or O (Capital Letter):\t";
 	std::cin>>player_choice;
 	//std::cin.clear();
 	
 	if(player_choice!="X"&&player_choice!="O")
 		{
-			std::cout<<"Enter X or O to continue";
+			std::cout<<"Enter (Capital) X or O to continue";
 			goto LOOP;
 		}
 
 	game->start_game(player_choice);
-	do
+	do //inner loop for marking board
 	{	
-		std::cin>>*game;
-		std::cout<<*game;
+		// take position and display board with overloaded operator.
+		std::cin>>*game;//overloaded cin game
+		std::cout<<*game;//overload cout game.
 		if (game->game_over()==true)
 			{
 				string final_victor= game->get_winner();
@@ -53,13 +56,13 @@ int main()
 	int o_win;
 	int ties;
 	manager.get_winner_total( o_win,x_win,ties);
-	std::cout<<"\n"<<"Wins for X:\t"<<x_win<<"\nWins for O:\t"<<o_win<<"\nTied games:\t"<<ties;
+	std::cout<<"Wins for X:\t"<<x_win<<"\nWins for O:\t"<<o_win<<"\nTied games:\t"<<ties;
 	string continue_check;
-	std::cout<<"\nTo continue, press 'Y', else press anything else: ";
+	std::cout<<"\nDo you want to continue or exit? If you want to continue enter (Capital) Y. Enter any other key to exit:\t";
 	std::cin>>continue_check;
-	if(continue_check=="Y")
+	if(continue_check=="Y")//if input ==Y, control will go to beginning, clear board and begin game again.
 		goto LOOP;
-	std::cout<<manager;
+	std::cout<<manager;//manager overload ostream cout.
 	
 	int x_wins;
 	int o_wins;

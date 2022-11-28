@@ -1,9 +1,7 @@
 //cpp
-#include <iostream>
 #include "tic_tac_toe.h"
-#include "tic_tac_toe_manager.h"
-#include<string>
-
+#include <iostream>
+#include <iomanip>
 void TicTacToe::start_game(string first_player)
 {
 if (first_player=="X"||first_player=="O")
@@ -18,71 +16,66 @@ void TicTacToe::mark_board(int position)
     pegs[position-1]=player;
     TicTacToe::set_next_player();
 }
-
 string TicTacToe::get_player()const
 {
     return TicTacToe::player;
 }
 
-void TicTacToe::set_next_player()
-{
+  void TicTacToe::set_next_player()
+  {
     if(TicTacToe::player=="X")
         TicTacToe::player="O";
     else
     player="X";
-}
+  }
 
-bool TicTacToe::check_board_full()
-{
+  bool TicTacToe::check_board_full()
+  {
     bool space_checker=true;
     for(int i=0; i<pegs.size();i++)
             if(TicTacToe::pegs[i]==" ")
                 space_checker=false;
     return space_checker;
-}
-
-void TicTacToe::clear_board()
-{
-    for(int i=0; i<9;i++)
-        (TicTacToe::pegs[i])=" ";
-}
+  }
+   void TicTacToe::clear_board()
+   {
+        for(int i=0; i<9;i++)
+                (TicTacToe::pegs[i])=" ";
+   }
 
   bool TicTacToe::game_over()
   {
     bool return_value;
     if ( check_column_win()==true|| check_row_win()==true||check_diagonal_win()==true)
-    {
+      {
         set_winner();
         return_value= true;
-    }
-    else if(check_board_full()==true)
-    {
+      }
+  else if(check_board_full()==true)
+   {
       winner="C";
       return_value= true;
-    }
-    else if (check_board_full()!=true)
-        return_value= false;
-    return return_value;
+   }
+   else if (check_board_full()!=true)
+    return_value= false;
+  return return_value;
   }
-
 string TicTacToe::get_winner()
 {
-    return winner;
+return winner;
 }
-
 bool TicTacToe::check_column_win()
 {
-    return false;
+ return false;
 }
 
 bool TicTacToe::check_row_win()
 {
-    return false;
+  return false;
 }
-
 bool TicTacToe::check_diagonal_win()
 {
-    return false;
+return false;
 }
 
 void TicTacToe::set_winner()
@@ -90,7 +83,7 @@ void TicTacToe::set_winner()
   if (player=="X")
     winner="O";
   else 
-        winner ="X";
+  winner ="X";
 }
 std::ostream& operator<<(std::ostream& out, const TicTacToe &game)
 {
